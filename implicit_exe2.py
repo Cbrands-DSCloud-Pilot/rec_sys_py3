@@ -56,8 +56,8 @@ for m in mkts:
 
     #Prediction
     os.environ['OPENBLAS_NUM_THREADS'] = '1'
-    param = {'alpha':[1,100],'factors': [10,80],'regularization': [0.001]}
-    d_test,opt_model,pred = implicit2.grid_search(data_sparse, param,itera=1,n_threads = 3,verbose = False, test_p=0.3)
+    param = {'alpha':[1,10,100],'factors': [10,20,40,80],'regularization': [0.001,0.1]}
+    d_test,opt_model,pred = implicit2.grid_search(data_sparse, param,itera=30,n_threads = 3,verbose = False, test_p=0.3)
 
     #Clean-up and write to table
     pred_results = pd.DataFrame(pred,columns = data_ratings.product)
